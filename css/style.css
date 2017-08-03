@@ -16,17 +16,22 @@
 
 h1 {
   text-align: center;
+  letter-spacing: .15em;
+}
+nav {
+  display: flex;
+  justify-content: space-around;
 }
 button {
   height: 2em;
-  width: 30%;
-  padding: 0 5em;
+  width: 15%;
   border: 1px solid #888;
   border-radius: 1em;
   box-shadow: 10px 10px 10px #888;
 }
 form {
   margin: 2em;
+  text-align: center;
 }
 input[type="text"] {
   width: 40%;
@@ -53,7 +58,8 @@ ul {
 }
 ul li {
   padding: 1em;
-  background: #adadad;
+  background: rgba(173, 173, 173);
+  background: rgba(173, 173, 173, .5);
   width: 28%;
   min-height: 7em;
   overflow: auto;

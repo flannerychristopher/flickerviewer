@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>click a button or enter a search</title>
+    <title>flickr viewer</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
@@ -10,16 +10,18 @@
   <body>
     <div class="container">
 
-      <h1>choose what kind of animal you want to see:</h1>
+      <h1>click a button or enter a search term</h1>
       <nav>
         <button>Kitten</button>
         <button>Puppy</button>
         <button>Piglet</button>
-        <form>
-          <input type="text" id="search" placeholder="search somethinge else...">
-          <input type="submit" id="submit">
-        </form>
+        <button>Hatchling</button>
       </nav>
+
+      <form>
+        <input type="text" id="search" placeholder="search somethinge else...">
+        <input type="submit" id="submit">
+      </form>
 
       <div id="photos"></div> <!-- end #photos -->
 

@@ -55,14 +55,24 @@ ul li {
   padding: 1em;
   background: #adadad;
   width: 28%;
-  height: 7em;
+  min-height: 7em;
+  overflow: auto;
   margin: .5em;
   border-radius: 1em;
-  flex-grow: 1;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+ul li span {
+  font-size: .8em;
+  font-weight: lighter;
 }
 img {
   border: 1px solid #888;
   box-shadow: 10px 10px 10px #888;
   max-width: 100%;
   max-height: 5em;
+  margin: 0 auto;
 }

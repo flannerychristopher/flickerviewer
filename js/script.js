@@ -1,8 +1,20 @@
 $(document).ready(function() {
   let photoDiv = $('#photos');
 
+  let printResults = function(data) {
+    let photoHTML = '<ul>';
+    $.each(data.items, function(i, photo) {
+      photoHTML += '<li>';
+      photoHTML += '<a href="' + photo.link + '">';
+      photoHTML += '<img src="' + photo.media.m + '"></a>';
+      let authorName = photo.author.split("\"")[1]
+      photoHTML += '<span>photo by: ' + authorName + '</span>';
+    });
+    photoHTML += '</ul>';
+    photoDiv.html(photoHTML);
+  }
 
-  $('button').click(function() {
+  $('button').click( function() {
     $('button').removeClass("active");
     $(this).addClass("active");
     photoDiv.html('');
@@ -12,21 +24,10 @@ $(document).ready(function() {
                 tags: $(this).text(),
                 format: "json",
               },
-              function(data) {
-                let photoHTML = '<ul>';
-                $.each(data.items, function(i, photo)  {
-                  photoHTML += '<li>';
-                  photoHTML += '<a href="' + photo.link + '">';
-                  photoHTML += '<img src="' + photo.media.m + '"></a></li>';
-                });
-                photoHTML += '</ul>';
-                photoDiv.html(photoHTML);
-              }
-
-            );
+              printResults);
   });
 
-  $('form').submit( function(evt) {
+  $('form').submit( (evt) => {
     evt.preventDefault();
     photoDiv.html('');
     let searchInput = $('#search');
@@ -40,16 +41,9 @@ $(document).ready(function() {
                 tags: searchInput.val(),
                 format: "json",
               },
-              function(data) {
+              (data) => {
                 if (data.items.length) {
-                  let photoHTML = '<ul>';
-                  $.each(data.items, function(i, photo)  {
-                    photoHTML += '<li>';
-                    photoHTML += '<a href="' + photo.link + '">';
-                    photoHTML += '<img src="' + photo.media.m + '"></a></li>';
-                  });
-                  photoHTML += '</ul>';
-                  photoDiv.html(photoHTML);
+                  printResults(data);
                 } else {
                   let textHTML = "Sorry, no results were found for ";
                   textHTML += searchInput.val();
@@ -60,6 +54,5 @@ $(document).ready(function() {
               }
             );
   });
-
 
 }); // close document ready

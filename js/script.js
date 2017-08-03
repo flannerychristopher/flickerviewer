@@ -9,8 +9,16 @@ $(document).ready(function() {
                 format: "json",
               },
               function(data) {
-
+                let photoHTML = '<ul>';
+                $.each(data.items, function(i, photo)  {
+                  photoHTML += '<li>';
+                  photoHTML += '<a href="' + photo.link + '">';
+                  photoHTML += '<img src="' + photo.media.m + '"></a></li>';
+                });
+                photoHTML += '</ul>';
+                $('#photos').html(photoHTML);
               }
+
             );
   });
 
